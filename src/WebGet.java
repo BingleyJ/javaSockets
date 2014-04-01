@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
@@ -22,39 +23,16 @@ public class WebGet {
 
 		// console stuff
 		Scanner reader = new Scanner(System.in);
+
 	
-			System.out.println("Hostname:");
+			System.out.println("url:");
 			host = reader.nextLine();
-			System.out.println("Resource:");
-			resource = reader.nextLine();
+			
+			URL newurl = new URL(host);
+			
+			System.out.println("Protocol :" + newurl.getProtocol() + " Host: " + newurl.getHost() + " Port: " + newurl.getPort() + " File: " + newurl.getFile());
+			
+			
 			//String input_resource = console.readLine("Resource:");
-
-			final int HTTP_PORT = 80;
-			Socket s = new Socket(host, HTTP_PORT);
-
-			InputStream instream = s.getInputStream();
-			OutputStream outstream = s.getOutputStream();
-
-			Scanner in = new Scanner(instream);
-			PrintWriter out = new PrintWriter(outstream);
-
-			String command = "GET " + resource + " HTTP/1.1\n" + "Host: "
-					+ host + "\n\n";
-
-			out.print(command);
-			out.flush();
-
-			while (in.hasNextLine()) {
-				String input = in.nextLine();
-				System.out.println(input);
-			}
-
-			// Always close the socket at the end
-
-			s.close();
-
-		}
-
-	}
-
-
+			
+		}}
