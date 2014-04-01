@@ -22,19 +22,12 @@ public class WebGet {
 
 		// console stuff
 		Scanner reader = new Scanner(System.in);
-
-		boolean running = true;
-
-		while (running) {
+	
 			System.out.println("Hostname:");
 			host = reader.nextLine();
 			System.out.println("Resource:");
 			resource = reader.nextLine();
 			//String input_resource = console.readLine("Resource:");
-
-			if (host == "quit") {
-				running = false;
-			}
 
 			final int HTTP_PORT = 80;
 			Socket s = new Socket(host, HTTP_PORT);
@@ -64,4 +57,4 @@ public class WebGet {
 
 	}
 
-}
+
